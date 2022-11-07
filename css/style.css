@@ -1,0 +1,138 @@
+/* --------- roulette 1--------*/
+.card-file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  margin: 26px auto;
+  width: 250px;
+  height: 250px;
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 0.4s;
+  background-color: rgb(255, 255, 255);
+}
+/* .op1{
+  background-color: #00c6f8;
+}
+.op2{
+  background-color: #00b8ae;
+  
+}
+.op3{
+  background-color: #620884;
+  
+}
+.op4{
+  background-color: #1307b1;
+  
+}
+*/
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+    -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+.card-title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  height: 40px;
+  color: blueviolet;
+}
+html,
+body,
+button {
+  font-family: Arial;
+  outline: none;
+  /* background: #2d30b7;
+  background: -webkit-linear-gradient(192deg, #2d30b7 0%, #6c0da3 100%);
+  background: linear-gradient(192deg, #2d30b7 0%, #6c0da3 100%); */
+  
+}
+
+button {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  margin-top: 50px;
+  text-align: center;
+}
+
+.box-roulette {
+  position: relative;
+  margin: 20px auto;
+  width: 300px;
+  height: 300px;
+  border: 10px solid #ccc;
+  border-radius: 50%;
+  background: #ccc;
+  overflow: hidden;
+}
+.box-roulette .markers {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin-left: -25px;
+  width: 0;
+  height: 0;
+  border: 25px solid #fff;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  z-index: 9999;
+}
+.box-roulette .roulette {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.box-roulette .item {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border: 0 solid transparent;
+  transform-origin: 0 100%;
+}
+.box-roulette .label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #fff;
+  white-space: nowrap;
+  transform-origin: 0 0;
+}
+.box-roulette .label .text {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+#btn-start {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin: -50px 0 0 -50px;
+  width: 100px;
+  height: 100px;
+  font-weight: bold;
+  background: #fff;
+  border-radius: 50px;
+  z-index: 9999;
+  cursor: pointer;
+}
+
+/*------------ end roulette1 --------------------*/ 
