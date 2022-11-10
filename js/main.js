@@ -62,8 +62,6 @@
 			console.log(ranges)
 		  }
 
-		//   let result = ranges.map((elm,i) => (deg >= elm) ? i:null).filter(elm => elm != null);
-		//   console.log("result",result)
 		  // creating roulette splits
 		  for (i = 1; i <= itemSize; i += 1) {
 			var idx = i - 1;
@@ -101,6 +99,7 @@
 		  }
   
 		  // spin function 
+		  // AQUI ESTA LA FUNCION PARA QUE LA RULETA GIRE
 		  $btnStart.on("click", function() {
 			rotation();
 		  });
@@ -122,36 +121,39 @@
 
 				if(currentA < 360 && currentA > 315){
 					console.log("gano el Azul")
-					var dialog = document.getElementById('dialogNotificationWinner')
-					dialog.showModal();
-					
-					dialog.addEventListener('click', () => dialog.close());
+					document.getElementById("fhase-three").style.display = "block";
+					document.getElementById("fhase-two").style.display = "none";
 				}
 				if(currentA < 315 && currentA > 225){
 					console.log("gano el Azul")
-					console.log("gano el Azul")
-					var dialog = document.getElementById('dialogNotificationWinner')
-					dialog.showModal();
-					dialog.addEventListener('click', () => dialog.close());
+					document.getElementById("fhase-three").style.display = "block";
+					document.getElementById("fhase-two").style.display = "none";
+
 				}
 				if(currentA < 225 && currentA > 135){
 					console.log("gano el Morado")
-					var dialog = document.getElementById('dialogNotificationWinner')
-					dialog.showModal();
-					dialog.addEventListener('click', () => dialog.close());
+					document.getElementById("fhase-three").style.display = "block";
+					document.getElementById("fhase-two").style.display = "none";
+
 				}
 				if(currentA < 135 && currentA > 0){
 					console.log("gano el Morado")
-					console.log("gano el Azul")
-					var dialog = document.getElementById('dialogNotificationWinner')
-					dialog.showModal();
+					document.getElementById("fhase-three").style.display = "block";
+					document.getElementById("fhase-two").style.display = "none";
+
+				}
+				if (currentA >= 360) {
+					document.getElementById("fhase-three").style.display = "block";
+					document.getElementById("fhase-two").style.display = "none";
+				
 				}
 			  },
-			  // TODO "la velocidad de la rotacion de la ruleta va a ser dependiendo del movimiento de la ruleta fisica"
 			  duration: speed
 			});
 		  }
-  
+
+		  // FIN DE LA ROTACION DE LA RULETA
+
 		  function r(min, max) {
 			return Math.floor(Math.random() * (max - min + 1)) + min;
 		  }
@@ -168,124 +170,32 @@
   });
 //----------- END ROULETTE 1 ---------------// 
 
-//----------- ROULETTE 3 -------------------//
+	function home() {
+		document.getElementById('fhase-one').style.display = "block";
+		document.getElementById('fhase-two').style.display = "none";
+		document.getElementById('fhase-three').style.display = "none";
+		document.getElementById('blue-card').style.display = "none";
+		document.getElementById('pink-card').style.display = "none";
+		document.getElementById('purple-card').style.display = "none";
 
-/**
- * Roulette logic
- */
-const spin = async () => {
-
-    const degBase= 1440;//To simulate at least 4 spins of the roulette
-    const deg = await randomSpinDeg();//Get Random Extra Degrees to spin the roulette     
-    const section = getSection(deg);//Get the section according with the random degrees
-    const totalDeg = deg+degBase;//Total degrees of the roulette going to spin
-    const sectionsElm = document.querySelectorAll('.optionRoulette');//Get all sections in the roulette
-    const roulette = document.querySelector('#roulette');
-    
-    console.log(section);
-
-    btnSpin.disabled = true;//Avoid user spin the roulette in each click over the button
-    roulette.classList.remove('transition')
-    roulette.style.transform= `rotate(0deg)`;
-    sectionsElm.forEach(function(elm,i) {   
-                elm.classList.add('brightness')// Add brightness in the section selected 
-        });
-  
-    setTimeout( ()=>{
-        roulette.classList.add('transition')
-        roulette.style.transform= `rotate(${totalDeg}deg)`; 
-    },10)
-  
-    setTimeout( ()=>{   
-      sectionsElm.forEach(function(elm,i) {   
-                elm.classList.remove('brightness')// Add brightness in the section selected 
-        });
-        sectionsElm.forEach(function(elm,i) {                        
-            if( i === section){
-                elm.classList.add('brightness')// Add brightness in the section selected
-            }
-            else{
-                elm.classList.add('opacity')//Add opacity in all elements no selected
-            }
-        });
-        document.querySelector('.container').classList.add('flyTop')//Add class to hide the roulette after the animation
-      btnSpin.disabled = false;
-    },4000);// !!This setTimeOut need to have the same Time as in the CSS class 'transition'   
-}
-
-
-/**
- * Return the number of the section selected (acording with the elements in the array  called sectionsArray)
- * 
- * @param {number} deg 
- */
-const getSection = (deg) =>{
-    
-    let sectionsArray = ['Red','Green','Blue','OtherBlue','Purple','Yellow'];//Array with all the sections on the roulette
-    let sectionLength = sectionsArray.length;//Get total number of sections
-    let degBySection = 360 / sectionLength;//Get the corresponding grades to each section
-    let ranges = [];
-    let value = 360;//Total Degrees
-
-    /**
-     * Get all the limit Degrees of each section
-     */
-    for (let i = 0; i < sectionLength ; i++) {
-        value -= (i===0)?  degBySection / 2  :  degBySection;        
-        ranges.push(value);        
-    }
-
-    let result = ranges.map( (elm,i)=> (deg >= elm)? i:null ).filter(elm => elm != null);
-
-    return  (result.length === 0 )? 0 : result[0]    
-}
-
-/**
- * Retun a Random Number [1-360]
- */
-const randomSpinDeg  = ()=>{
-    return  Math.floor(Math.random() * (360 - 0 + 1) ) + 0 ;
-}
-
-// const main = ()=>{
-//     const btnSpin = document.querySelector('#btnSpin');
-//     btnSpin.addEventListener('click', spin);
-// }
-
-// main();
-
-//----------- END ROULETTE 3 -------------------//
-
+	}
 	function getValue(data) {
 		let value = data;
 		if (value === "blue") {
-			document.getElementById("innovin-writer").style.display = "none";
-			document.getElementById("innovin-winner").style.display = "none";
-			document.getElementById("innovin-happy").style.display = "block";
+			document.getElementById('blue-card').style.display = "block";
+
 		}
 		if (value === "pink") {
-			document.getElementById("innovin-writer").style.display = "none";
-			document.getElementById("innovin-happy").style.display = "none";
-			document.getElementById("innovin-winner").style.display = "block";
+			document.getElementById('pink-card').style.display = "block";
+
 		}
 		if (value === "purple") {
-			document.getElementById("innovin-winner").style.display = "none";
-			document.getElementById("innovin-happy").style.display = "none";
-			document.getElementById("innovin-writer").style.display = "block";
+			document.getElementById('purple-card').style.display = "block";
+
 		}
 	}
 	const functionFour = () => {
 		document.getElementById('fhase-one').style.display = "none";
 		document.getElementById('fhase-two').style.display = "block";
-		document.getElementById("innovin-writer").style.display = "none";
-		document.getElementById("innovin-winner").style.display = "none";
-		document.getElementById("innovin-happy").style.display = "block";
-		
-		var dialogTwo = document.getElementById('dialogNotification')
-		dialogTwo.showModal();
-		var close = document.getElementById('close-btn');
-		close.addEventListener('click', () => dialogTwo.close());
-		console.log("opcion 4")
 	}
-
 //----------- FireWork ---------//

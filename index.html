@@ -10,15 +10,17 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <!-- Roulette 1 -->
+    <button class="return" onclick="home()">
+      <i class="fa-solid fa-house fa-2xl"></i>
+    </button>
     <div class="header">
       <img
         class="monagas-innova"
         src="./images/monagas_innova_logo_blanco.png"
       />
     </div>
-    <div class="middle">
-      <div id="fhase-one" style="display: block">
+    <div id="fhase-one" style="display: block">
+      <div class="middle">
         <div class="card-file">
           <button
             class="card op1"
@@ -26,7 +28,13 @@
             value="blue"
             onclick="getValue(value)"
           >
-            <div class="card-title"></div>
+            <div
+              class="card-title"
+              id="blue-card"
+              style="display: none;"
+            >
+              <i class="fa-solid fa-check fa-2xl"></i>
+            </div>
           </button>
           <button
             class="card op2"
@@ -34,7 +42,13 @@
             value="purple"
             onclick="getValue(value)"
           >
-            <div class="card-title"></div>
+            <div
+              class="card-title"
+              id="purple-card"
+              style="display: none;"
+            >
+              <i class="fa-solid fa-check fa-2xl"></i>
+            </div>
           </button>
         </div>
         <div class="card-file">
@@ -44,7 +58,13 @@
             value="pink"
             onclick="getValue(value)"
           >
-            <div class="card-title"></div>
+            <div
+              class="card-title"
+              id="pink-card"
+              style="display: none;"
+            >
+              <i class="fa-solid fa-check fa-2xl"></i>
+            </div>
           </button>
           <button
             class="card op4"
@@ -56,9 +76,18 @@
           </button>
         </div>
       </div>
-      <div id="fhase-two" style="display: none">
+      <div class="footer">
+        <div class="innovin-message text-center">
+          <h4>SELECCIONA UN COLOR</h4>
+        </div>
+        <img class="innovin" src="./images/innovin-writer.png" />
+      </div>
+    </div>
+
+    <div id="fhase-two" style="display: none">
+      <div class="middle">
         <img class="roulette-image" src="./images/RULETA.png" />
-				<div class="markers"></div>
+        <div class="markers"></div>
         <div class="box-roulette" id="">
           <button class="image-button" type="button" id="btn-start">
             <img class="innovin-logo" src="images/innovin-logo.png" />
@@ -66,35 +95,34 @@
           <div class="roulette" id="roulette"></div>
         </div>
       </div>
-			<div id="fhase-three" style="display: none;">
-				<h2>USTED HA GANADO: UN COCTEL DE BIENVENIDA (MOJITO)</h2>
-				<!-- <img src="./images/cuba.png" id="cuba"> -->
-				<img src="./images/mojito.jpg" class="mojito" id="mojito" />
-			</div>
-    </div>
-    <div class="footer">
-      <div id="innovin-writer">
-        <div class="innovin-message text-center">
-          <h4>SELECCIONA UN COLOR</h4>
+      <div class="footer">
+        <div>
+          <div class="innovin-message text-center">
+            <h4>TOCA LA RULETA PARA GIRARLA</h4>
+          </div>
+          <img class="innovin" src="./images/innovin-happy.png" />
         </div>
-        <img class="innovin" src="./images/innovin-writer.png" />
-      </div>
-      <div id="innovin-happy" style="display: none">
-        <div class="innovin-message text-center">
-          <h4>TOCA LA RULETA PARA GIRARLA</h4>
-        </div>
-        <img class="innovin" src="./images/innovin-happy.png" />
-      </div>
-      <div id="innovin-winner" style="display: none">
-        <img class="innovin" src="./images/innovin-winner.png" />
       </div>
     </div>
 
-    <!-- End Roulette 1 -->
+    <div id="fhase-three" style="display: none">
+      <div class="middle">
+        <div class="reward">
+          <h2>USTED HA GANADO</h2>
+          <h5>UN COCTEL "BLOCKCHAIN"</h5>
+        </div>
+      </div>
+      <div class="footer">
+        <img class="innovin-winner" src="./images/innovin-winner.png" />
+      </div>
+    </div>
 
+    <script
+      src="https://kit.fontawesome.com/5de6012a34.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.sobekrepository.org/includes/jquery-rotate/2.2/jquery-rotate.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
