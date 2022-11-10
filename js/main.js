@@ -17,22 +17,22 @@
 			// triangles data inner roulette 
 		  var data = [
 		  {
-			  color: '#00c6f8',
+			  color: '#c926d2',
 			  text: ''
 			},
 			
 		  {
-			  color: '#280033',
+			  color: '#3bc3e7',
 			  text: ''
 			},
 			
 		  {
-			  color: '#01d2ee',
+			  color: '#c926d2',
 			  text: ''
 			},
 		   
 		  {
-			  color: ' #280033',
+			  color: ' #3bc3e7',
 			  text: ''
 			},
 		  ];
@@ -119,20 +119,32 @@
 				var currentA = $(this).getRotateAngle()/10;
   
 				console.log("roulette angle",currentA);
-				if (currentA > 360) {
-					return rotation();
-				}
+
 				if(currentA < 360 && currentA > 315){
 					console.log("gano el Azul")
+					var dialog = document.getElementById('dialogNotificationWinner')
+					dialog.showModal();
+					
+					dialog.addEventListener('click', () => dialog.close());
 				}
 				if(currentA < 315 && currentA > 225){
 					console.log("gano el Azul")
+					console.log("gano el Azul")
+					var dialog = document.getElementById('dialogNotificationWinner')
+					dialog.showModal();
+					dialog.addEventListener('click', () => dialog.close());
 				}
 				if(currentA < 225 && currentA > 135){
 					console.log("gano el Morado")
+					var dialog = document.getElementById('dialogNotificationWinner')
+					dialog.showModal();
+					dialog.addEventListener('click', () => dialog.close());
 				}
 				if(currentA < 135 && currentA > 0){
 					console.log("gano el Morado")
+					console.log("gano el Azul")
+					var dialog = document.getElementById('dialogNotificationWinner')
+					dialog.showModal();
 				}
 			  },
 			  // TODO "la velocidad de la rotacion de la ruleta va a ser dependiendo del movimiento de la ruleta fisica"
@@ -235,27 +247,45 @@ const randomSpinDeg  = ()=>{
     return  Math.floor(Math.random() * (360 - 0 + 1) ) + 0 ;
 }
 
-const main = ()=>{
-    const btnSpin = document.querySelector('#btnSpin');
-    btnSpin.addEventListener('click', spin);
-}
+// const main = ()=>{
+//     const btnSpin = document.querySelector('#btnSpin');
+//     btnSpin.addEventListener('click', spin);
+// }
 
-main();
+// main();
 
 //----------- END ROULETTE 3 -------------------//
 
-	const functionOne = () => {
-		console.log("opcion 1")
+	function getValue(data) {
+		let value = data;
+		if (value === "blue") {
+			document.getElementById("innovin-writer").style.display = "none";
+			document.getElementById("innovin-winner").style.display = "none";
+			document.getElementById("innovin-happy").style.display = "block";
+		}
+		if (value === "pink") {
+			document.getElementById("innovin-writer").style.display = "none";
+			document.getElementById("innovin-happy").style.display = "none";
+			document.getElementById("innovin-winner").style.display = "block";
+		}
+		if (value === "purple") {
+			document.getElementById("innovin-winner").style.display = "none";
+			document.getElementById("innovin-happy").style.display = "none";
+			document.getElementById("innovin-writer").style.display = "block";
+		}
 	}
-
-	const functionTwo = () => {
-		console.log("opcion 2")
-	}
-
-	const functionThree = () => {
-		console.log("opcion 3")
-	}
-
 	const functionFour = () => {
+		document.getElementById('fhase-one').style.display = "none";
+		document.getElementById('fhase-two').style.display = "block";
+		document.getElementById("innovin-writer").style.display = "none";
+		document.getElementById("innovin-winner").style.display = "none";
+		document.getElementById("innovin-happy").style.display = "block";
+		
+		var dialogTwo = document.getElementById('dialogNotification')
+		dialogTwo.showModal();
+		var close = document.getElementById('close-btn');
+		close.addEventListener('click', () => dialogTwo.close());
 		console.log("opcion 4")
 	}
+
+//----------- FireWork ---------//
