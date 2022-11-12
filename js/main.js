@@ -1,4 +1,5 @@
 //--------- ROULETTE 1 ------------//
+var currentA = null;
 (function ($) {
   $.fn.extend({
     roulette: function (options) {
@@ -131,27 +132,22 @@
             callback: function () {
               // getting data from the angle of the roulette rotation
               // TODO "asignar colores dependiendo del angulo de la ruleta para asignar ganador"
-              var currentA = $(this).getRotateAngle() / 10;
+              currentA = $(this).getRotateAngle() / 10;
 
               console.log("roulette angle", currentA);
-
               if (currentA < 360 && currentA > 315) {
-                console.log("gano el Azul");
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
               }
               if (currentA < 315 && currentA > 225) {
-                console.log("gano el Azul");
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
               }
               if (currentA < 225 && currentA > 135) {
-                console.log("gano el Morado");
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
               }
               if (currentA < 135 && currentA > 0) {
-                console.log("gano el Morado");
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
               }
@@ -467,26 +463,36 @@ const cards = [
 //----------- END Cards Registration ----------//
 
 function home() {
-  document.getElementById("fhase-one").style.display = "block";
-  document.getElementById("fhase-two").style.display = "none";
-  document.getElementById("fhase-three").style.display = "none";
-  document.getElementById("blue-card").style.display = "none";
-  document.getElementById("pink-card").style.display = "none";
-  document.getElementById("purple-card").style.display = "none";
+	if(currentA !== null) {
+		document.getElementById("fhase-one").style.display = "block";
+		document.getElementById("fhase-two").style.display = "none";
+		document.getElementById("fhase-three").style.display = "none";
+		document.getElementById("fhase-three-winner").style.display = "none";
+		document.getElementById("fhase-three-comodin").style.display = "none";
+	}
 }
 
-function getValue(data) {
-  let value = data;
-  if (value === "blue") {
-  }
-  if (value === "pink") {
-  }
-  if (value === "purple") {
-  }
+var value = ""
+// getting card value
+async function getValue(data) {
+  value = data;
 }
-
-const functionFour = () => {
-  document.getElementById("fhase-one").style.display = "none";
-  document.getElementById("fhase-two").style.display = "block";
-};
+ // comparison roulette value against card value
+function knowValue() {
+	// here we got the roulette value
+	var winnerValue = document.getElementById("winner").value;
+	//
+	if (value === winnerValue) {
+		document.getElementById("fhase-one").style.display = "none";
+  		document.getElementById("fhase-three-winner").style.display = "block";
+	}else if(winnerValue === "comodin"){
+		document.getElementById("fhase-one").style.display = "none";
+  		document.getElementById("fhase-three-comodin").style.display = "block";
+	}
+	else {
+		console.log("USTED PERDIO");
+		document.getElementById("fhase-one").style.display = "none";
+  		document.getElementById("fhase-two").style.display = "block";
+	}
+}
 //----------- FireWork ---------//

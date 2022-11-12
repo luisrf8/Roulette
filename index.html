@@ -13,6 +13,8 @@
     <button class="return" onclick="home()">
       <i class="fa-solid fa-house fa-2xl"></i>
     </button>
+		<input type="text" id="winner"/>
+		<button onclick="knowValue()">Roulette</button>
     <div class="header">
       <img
         class="monagas-innova"
@@ -69,8 +71,8 @@
           <button
             class="card op4"
             id="card-number-two"
-            value="purple2"
-            onclick="functionFour()"
+            value="blackpurple"
+            onclick="getValue(value)"
           >
             <div class="card-title" id="card-selected"></div>
           </button>
@@ -98,7 +100,7 @@
       <div class="footer">
         <div>
           <div class="innovin-message text-center">
-            <h4>TOCA LA RULETA PARA GIRARLA</h4>
+            <h4>¡2DA OPORTUNIDAD! TOCA LA RULETA PARA GIRARLA.</h4>
           </div>
           <img class="innovin" src="./images/innovin-happy.png" />
         </div>
@@ -110,6 +112,28 @@
         <div class="reward">
           <h2>USTED HA GANADO</h2>
           <h5>UN COCTEL "BLOCKCHAIN"</h5>
+        </div>
+      </div>
+      <div class="footer">
+        <img class="innovin-winner" src="./images/innovin-winner.png" />
+      </div>
+    </div>
+		<div id="fhase-three-winner" style="display: none">
+      <div class="middle">
+        <div class="reward">
+          <h2>USTED HA GANADO</h2>
+          <h5>UN TICKET DE KRIPTORIFA</h5>
+        </div>
+      </div>
+      <div class="footer">
+        <img class="innovin-winner" src="./images/innovin-winner.png" />
+      </div>
+    </div>
+		<div id="fhase-three-comodin" style="display: none">
+      <div class="middle">
+        <div class="reward">
+          <h2>USTED HA GANADO</h2>
+          <h5>¡UN TICKET DE KRIPTORIFA Y UN COCTEL BLOCKCHAIN!</h5>
         </div>
       </div>
       <div class="footer">

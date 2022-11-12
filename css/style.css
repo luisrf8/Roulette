@@ -22,9 +22,9 @@
   bottom: -3.5rem;
   left: -0.5rem;
 }
-@media only screen and (min-width: 770px) and (max-height: 500px) {
+@media screen and (max-width: 500px) {
   .footer {
-    position: relative;
+    position: absolute;
   }
 }
 .innovin {
@@ -36,9 +36,6 @@
   border-style: none;
   background: #00000052 0% 0% no-repeat padding-box;
   border-radius: 36px;
-  opacity: 1;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
   color: #fff;
   font-family: "Formula1 Display Wide";
 }
