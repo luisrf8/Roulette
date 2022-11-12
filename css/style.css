@@ -240,3 +240,11 @@ body {
   }
 }
 /*------------ end roulette1 --------------------*/
+.fireworks-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+.fireworks-container:nth-of-type(2){
+  z-index: 9;
+}

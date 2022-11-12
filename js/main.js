@@ -1,5 +1,7 @@
 //--------- ROULETTE 1 ------------//
 var currentA = null;
+let sound = new Audio("../fonts/KYQDEJ4-jackpot.mp3");
+let secondWinnerAudio = new Audio("../fonts/AJLHX4K-jackpot-2.mp3"); 
 (function ($) {
   $.fn.extend({
     roulette: function (options) {
@@ -138,22 +140,27 @@ var currentA = null;
               if (currentA < 360 && currentA > 315) {
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
+				secondWinnerAudio.play();
               }
               if (currentA < 315 && currentA > 225) {
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
+				secondWinnerAudio.play();
               }
               if (currentA < 225 && currentA > 135) {
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
+				secondWinnerAudio.play();
               }
               if (currentA < 135 && currentA > 0) {
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
+				secondWinnerAudio.play();
               }
               if (currentA >= 360) {
                 document.getElementById("fhase-three").style.display = "block";
                 document.getElementById("fhase-two").style.display = "none";
+				secondWinnerAudio.play();
               }
             },
             duration: speed,
@@ -485,9 +492,14 @@ function knowValue() {
 	if (value === winnerValue) {
 		document.getElementById("fhase-one").style.display = "none";
   		document.getElementById("fhase-three-winner").style.display = "block";
+		sound.play();
+		initFireWorks();
+		
 	}else if(winnerValue === "comodin"){
 		document.getElementById("fhase-one").style.display = "none";
   		document.getElementById("fhase-three-comodin").style.display = "block";
+		sound.play();
+		initFireWorks();
 	}
 	else {
 		console.log("USTED PERDIO");
@@ -496,3 +508,24 @@ function knowValue() {
 	}
 }
 //----------- FireWork ---------//
+function initFireWorks(){
+	const containers = document.querySelectorAll('.fireworks-container')
+	containers.forEach((container,index) => {
+	  index+=1;
+	  const fireworks = new Fireworks(container, {
+		hue: { min: 0, max: 360 },
+		delay: { min: 50/index, max: 100/index },
+		brightness: {min: 80, max: 100},
+		rocketsPoint: 50,
+		opacity: 1,
+		speed: 1/index,
+		acceleration: 1.05,
+		friction: 0.97,
+		gravity: 2,
+		particles: 200/index,
+		trace: 4/index,
+		explosion: 40/index,
+	  })
+	  fireworks.start()
+	})
+  }
