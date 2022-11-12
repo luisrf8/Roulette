@@ -470,13 +470,11 @@ const cards = [
 //----------- END Cards Registration ----------//
 
 function home() {
-	if(currentA !== null) {
 		document.getElementById("fhase-one").style.display = "block";
 		document.getElementById("fhase-two").style.display = "none";
 		document.getElementById("fhase-three").style.display = "none";
 		document.getElementById("fhase-three-winner").style.display = "none";
 		document.getElementById("fhase-three-comodin").style.display = "none";
-	}
 }
 
 var value = ""
