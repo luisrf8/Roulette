@@ -510,7 +510,7 @@ async function getValue(data) {
 
  // comparison roulette value against card value
 function knowValue(competitor) {
-
+		      // roulette.play();
 	// here we got the roulette value
 	// var winnerValue = document.getElementById("winner").value;
 	//
@@ -532,7 +532,7 @@ function knowValue(competitor) {
 	}
 	else {
 		console.log("USTED PERDIO");
-    localStorage.play();
+    lose.play();
 		document.getElementById("fhase-one").style.display = "none";
   		document.getElementById("fhase-two").style.display = "block";
 	}
