@@ -4,11 +4,13 @@ let actual_competitor = '';
 socket.on('competitors', function (data) {
     actual_competitor = data;
     knowValue(actual_competitor)
+    // getCompetitors(actual_competitor)
 })
 
 //--------- ROULETTE 1 ------------//
 var currentA = null;
-// let sound = new Audio("./sounds");
+// let lose = new Audio("./sounds/loseSound.wav");
+// let roulette = new Audio("./sounds/rouletteSpin.mp3");
 let sound = new Audio("./sounds/KYQDEJ4-jackpot.mp3")
 let secondWinnerAudio = new Audio("./sounds/AJLHX4K-jackpot-2.mp3"); 
 (function ($) {
@@ -133,6 +135,10 @@ let secondWinnerAudio = new Audio("./sounds/AJLHX4K-jackpot-2.mp3");
         });
 
         function rotation() {
+          //ROULETTE SOUND
+		      // roulette.play();
+
+
           // roulette rotation
           var completeA = 360 * r(5, 10) + r(0, 360);
           $roulette.rotate({
@@ -491,8 +497,20 @@ var value = ""
 async function getValue(data) {
   value = data;
 }
+
+// GUARDANDO DATOS EN UN ARREGLO 
+// let competitorsValue = [] 
+// function getCompetitors(competitor){
+//   competitorsValue.push(competitor); 
+//   const competitorWinner = competitorsValue[competitorsValue.length - 1];
+//   console.log(competitorWinner);
+//   //TODO al regresar al home se debe limpiar el array competitorsValue
+// }
+
+
  // comparison roulette value against card value
 function knowValue(competitor) {
+
 	// here we got the roulette value
 	// var winnerValue = document.getElementById("winner").value;
 	//
@@ -514,29 +532,30 @@ function knowValue(competitor) {
 	}
 	else {
 		console.log("USTED PERDIO");
+    localStorage.play();
 		document.getElementById("fhase-one").style.display = "none";
   		document.getElementById("fhase-two").style.display = "block";
 	}
 }
 //----------- FireWork ---------//
-function initFireWorks(){
-	const containers = document.querySelectorAll('.fireworks-container')
-	containers.forEach((container,index) => {
-	  index+=1;
-	  const fireworks = new Fireworks(container, {
-		hue: { min: 0, max: 360 },
-		delay: { min: 50/index, max: 100/index },
-		brightness: {min: 80, max: 100},
-		rocketsPoint: 50,
-		opacity: 1,
-		speed: 1/index,
-		acceleration: 1.05,
-		friction: 0.97,
-		gravity: 2,
-		particles: 200/index,
-		trace: 4/index,
-		explosion: 40/index,
-	  })
-	  fireworks.start()
-	})
-  }
+// function initFireWorks(){
+// 	const containers = document.querySelectorAll('.fireworks-container')
+// 	containers.forEach((container,index) => {
+// 	  index+=1;
+// 	  const fireworks = new Fireworks(container, {
+// 		hue: { min: 0, max: 360 },
+// 		delay: { min: 50/index, max: 100/index },
+// 		brightness: {min: 80, max: 100},
+// 		rocketsPoint: 50,
+// 		opacity: 1,
+// 		speed: 1/index,
+// 		acceleration: 1.05,
+// 		friction: 0.97,
+// 		gravity: 2,
+// 		particles: 200/index,
+// 		trace: 4/index,
+// 		explosion: 40/index,
+// 	  })
+// 	  fireworks.start()
+// 	})
+//   }

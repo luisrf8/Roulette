@@ -19,26 +19,26 @@ server.listen(3000, function () {
 const { SerialPort, ReadlineParser   } = require('serialport')
 
 // Determinar el puerto al que se conectará el server
-const port = new SerialPort(
-    { 
-        path: 'COM4',
-        baudRate: 9600
-    }
-)
+// const port = new SerialPort(
+//     { 
+//         path: 'COM4',
+//         baudRate: 9600
+//     }
+// )
 
 // Iniciar el ReadlineParser para detectar las lineas seriales detectadas en el puerto
 const parser = new ReadlineParser()
 
 // Leer las lineas seriales mientras son detectadas
-port.pipe(parser)
-parser.on('data', (line)=>{
-    console.log(line);
-    io.emit('competitors', line)
-})
+// port.pipe(parser)
+// parser.on('data', (line)=>{
+//     console.log(line);
+//     io.emit('competitors', line)
+// })
 
 // error
-port.on('error', (err) => {
-    console.log(err);
-});
+// port.on('error', (err) => {
+//     console.log(err);
+// });
 
 // Fin de Comunicación Serial
